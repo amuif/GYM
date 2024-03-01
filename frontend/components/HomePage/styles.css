@@ -1,0 +1,7 @@
+/* styles.module.css */
+.bgWrap {
+    position: relative; /* Required for the image to cover the container */
+    height: 100vh; /* Set the desired height (e.g., full viewport height) */
+    width: 100vw; /* Set the desired width (e.g., full viewport width) */
+  }
+  
