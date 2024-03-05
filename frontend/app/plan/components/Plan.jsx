@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import {
   Card,
@@ -10,7 +10,7 @@ import {
   Button,
 } from "@nextui-org/react";
 
-const Plan = () => {
+const Plans = () => {
   const Plans = [
     {
       name: "Monthly",
@@ -33,8 +33,12 @@ const Plan = () => {
   ];
 
   return (
-    <>
-      <div className="flex flex-row gap-5 justify-center bg-[#AB0139] p-11">
+    <div className="flex flex-col pt-36" id="plans">
+      <div className="flex flex-col">
+        <h3 className="text-main text-center text-2xl font-bold">Pricing</h3>
+        <p className="text-center font-semibold text-3xl text-wrap">CHECK OUT OUR BEST PRICING  <br /> TABLES & JOIN US </p>
+      </div>
+      <div className="flex flex-row gap-5 justify-center p-11">
         {Plans.map((plan, index) => {
           const centerCard = index === Plans.length - 2;
           const cardBackgroundClass = centerCard ? "bg-main text-white" : "bg-[#2B2024] text-white";
@@ -70,8 +74,8 @@ const Plan = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 
-export default Plan;
+export default Plans;

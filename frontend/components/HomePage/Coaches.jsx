@@ -46,6 +46,8 @@ export default function Coaches() {
                 alt={`Photo of ${coach.name}`}
                 className="z-0 w-full h-full object-cover rounded-none"
                 src={coach.image}
+                loading = 'lazy' // {lazy} | {eager}
+
               />
               <CardFooter className="absolute bg-main bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100 rounded-none">
                 <div className="flex flex-grow gap-2 items-center">

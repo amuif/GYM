@@ -18,6 +18,8 @@ const About = () => {
               height={200}
               alt="Photo"
               className=" mx-auto rounded-none"
+              loading = 'lazy' // {lazy} | {eager}
+
             />{" "}
           </div>
           <div className="flex mx-auto w-4/6 ">
@@ -49,6 +51,8 @@ const About = () => {
               height={500}
               alt="circled Photo Number 1"
               className="rounded-full"
+              loading = 'lazy' // {lazy} | {eager}
+
             />
           </div>
           <div>
@@ -58,6 +62,8 @@ const About = () => {
               height={500}
               alt="Circled Photo Number 2 "
               className="rounded-full "
+              loading = 'lazy' // {lazy} | {eager}
+
             />
           </div>
         </div>

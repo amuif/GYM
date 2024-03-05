@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
           <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
           <Providers>
             <NavBar />
-            <main className="">{children} </main>
+            {children}
             <Footer />
           </Providers>
         </UserContextProvider>

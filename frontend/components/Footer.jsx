@@ -23,7 +23,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className=" flex flex-row justify-between gap-10 p-14 bg-[#2B2024] text-white">
+      <div className=" flex flex-row justify-between gap-10 p-14 bg-[#2B2024] text-white ">
         {/* Social media links and logo */}
         <div className="flex flex-col">
           <h2 className="text-bold text-main">Lorem GYM</h2>

@@ -4,10 +4,12 @@ const bcrypt = require("bcrypt");
 const { json } = require("express");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+
 // create a user
 
 const createUser = async (req, res) => {
   const { email, password, name } = req.body;
+  console.log(req.body);
 
   if (!email || !password || !name) {
     return res.status(400).json({ error: "Both fields must be filled" });
@@ -38,34 +40,6 @@ const createUser = async (req, res) => {
   }
 };
 
-// // edit users data
-
-// const editUser = async (req, res) => {
-//   const { id } = req.params;
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     return res.status(200).json({ message: "No such user" });
-//   }
-//   const user = await userModel.findByIdAndUpdate({ _id: id }, { ...req.body });
-//   if (!user) {
-//     return res.status(400).json({ error: "No such user" });
-//   }
-//   res.status(200).json(user);
-// };
-
-// // delete user
-
-// const deleteUser = async (req, res) => {
-//   const { id } = req.params;
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     return res.status(404).json({ error: "No such user" });
-//   }
-//   const user = await userModel.findByIdAndDelete({ _id: id });
-//   if (!user) {
-//     return res.status(400).json({ error: "No such user" });
-//   }
-//   res.status(200).json(user);
-// };
-
 // login user
 const loginUser = async (req, res) => {
   try {
@@ -87,11 +61,12 @@ const loginUser = async (req, res) => {
         {},
         (err, token) => {
           if (err) {
-            throw err
-          };
-          
-          res.cookie("token", token, {sameSite: 'none', secure: true}).json(user);
+            throw err;
+          }
 
+          res
+            .cookie("token", token, { sameSite: "none", secure: true })
+            .json(user);
         }
       );
     }
@@ -106,15 +81,13 @@ const loginUser = async (req, res) => {
 // get User
 
 const getUser = (req, res) => {
- 
   const { token } = req.cookies;
-  console.log(req.cookies)
+  console.log(req.cookies);
   if (token) {
     jwt.verify(token, process.env.JWT_PRIVATEKEY, {}, (err, user) => {
       if (err) throw err;
       res.json(user);
     });
-    
   } else {
     res.json(null);
   }

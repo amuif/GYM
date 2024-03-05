@@ -1,6 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
@@ -89,12 +88,12 @@ export default function LoginCard() {
                 </div>
               </div>
               <CardFooter className="flex justify-center p-2">
-                <Button type="submit">Log in</Button>
+                <Button type="submit" className="bg-main text-white">Log in</Button>
               </CardFooter>
             </form>
             <div className="links flex flex-col">
               <label className="text-center">or</label>
-              <Button className="bg-white align-middle py-6">
+              <Button variant="light" className="bg-white hover:bg-inherit align-middle py-6">
                 <Image src={Google} width={35} height={30} alt="Google logo" ></Image>
               </Button>
             </div>

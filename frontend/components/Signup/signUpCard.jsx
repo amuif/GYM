@@ -1,11 +1,10 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 import { useState } from "react";
 import axios from "axios";
-
+import styles from "@/app/styles.css"
 import {
   Card,
   CardContent,
@@ -25,14 +24,14 @@ export function SignUpCard() {
   });
   const navigate = useRouter();
 
-  // Inside your component
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = data;
     console.log(data);
 
     try {
-       // Access the router object
+  
 
       const response = await axios.post(
         "http://localhost:5000/api/user/register",
@@ -42,25 +41,33 @@ export function SignUpCard() {
           password,
         }
       );
-      
 
       if (response.data.error) {
         toast.error(response.data.error);
       } else {
         setData({});
         toast.success("Registration was successful. Welcome aboard!");
-        navigate.push("/login"); // Navigate to the login page
+        console.log("Success")
+        navigate.push('/login'); 
       }
     } catch (error) {
       console.error("Error during registration:", error);
     }
   };
 
-  // Rest of your component...
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen">
+    <div className={styles.bgWrap}>
+        <Image
+          src=""
+          fill={true}
+          className="object-cover -z-10 blur-sm brightness-50"
+          quality={100}
+          alt="Background Image"
+        />
+      </div>
+      <div className={`flex items-center justify-center h-screen bg-backggroundSVG`}>
         <Card className="w-1/4 ">
           <CardHeader>
             <CardTitle className="text-center">Sign Up</CardTitle>
@@ -111,7 +118,9 @@ export function SignUpCard() {
               </div>
 
               <CardFooter className="flex justify-center py-5">
-                <Button type="submit">Sign up</Button>
+                <Button type="submit" className="bg-main text-white">
+                  Sign up
+                </Button>
               </CardFooter>
             </form>
           </CardContent>

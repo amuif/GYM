@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
+import Image from "next/image";
 const Whyus = () => {
   let Whyus = [
     {
@@ -39,10 +40,14 @@ const Whyus = () => {
                 className="max-w-sm  overflow-hidden shadow-lg rounded-none"
                 key={index}
               >
-                <img
+                <Image
                   className="w-full"
                   src={why.image}
+                  width={300}
+                  height={300}
                   alt="Photos showing trainers,equipment and membership plans"
+                  loading = 'eager' // {lazy} | {eager}
+
                 />
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{why.title}</div>
