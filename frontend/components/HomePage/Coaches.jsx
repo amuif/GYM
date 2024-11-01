@@ -30,28 +30,27 @@ export default function Coaches() {
 
   return (
     <>
-      <h4 className="text-center font-bold text-2xl py-9">Our Coaches</h4>
+      <h4 className="text-center text-2xl md:text-5xl font-semibold p-4">Our Coaches</h4>
 
-    <div className="flex flex-row py-11">
+    <div className="flex flex-col md:flex-row  gap-5 py-11">
       {Coaches.map((coach, index) => {
         return (
-          <div className="w-2/5 gap-2 px-8 flex " key={index}>
+          <div className="w-full md:w-2/5 gap-2 px-2 flex " key={index}>
             <Card
               isFooterBlurred
               className="w-full h-[300px] col-span-12 sm:col-span-7 rounded-none"
             >
-              <CardHeader className="absolute z-10 top-1 flex-col items-start"></CardHeader>
+    
               <Image
                 removeWrapper
                 alt={`Photo of ${coach.name}`}
                 className="z-0 w-full h-full object-cover rounded-none"
                 src={coach.image}
-                loading = 'lazy' // {lazy} | {eager}
-
+         
               />
-              <CardFooter className="absolute bg-main bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100 rounded-none">
+              <CardFooter className="absolute bg-main bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100 rounded-none flex items-center justify-center">
                 <div className="flex flex-grow gap-2 items-center">
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-center justify-center w-full mx-auto">
                     <h4 className=" text-white font-semibold text-xl">{coach.name}</h4>
                     <small className="text-tiny text-white/80 font-semibold">
                       {coach.role}

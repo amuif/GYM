@@ -33,19 +33,19 @@ const Plans = () => {
   ];
 
   return (
-    <div className="flex flex-col pt-36" id="plans">
-      <div className="flex flex-col">
+    <div className="flex flex-col" id="plans">
+      <div className="flex flex-col py-3">
         <h3 className="text-main text-center text-2xl font-bold">Pricing</h3>
-        <p className="text-center font-semibold text-3xl text-wrap">CHECK OUT OUR BEST PRICING  <br /> TABLES & JOIN US </p>
+        <p className="text-center font-semibold text-xl md:text-3xl text-wrap">CHECK OUT OUR BEST PRICING  <br /> TABLES & JOIN US </p>
       </div>
-      <div className="flex flex-row gap-5 justify-center p-11">
+      <div className="flex flex-col md:flex-row gap-5 justify-center px-2 p-5 md:p-11">
         {Plans.map((plan, index) => {
           const centerCard = index === Plans.length - 2;
-          const cardBackgroundClass = centerCard ? "bg-main text-white" : "bg-[#2B2024] text-white";
+          const cardBackgroundClass = centerCard ? "" : "bg-[#2B2024] text-white";
 
           
           return (
-            <Card className={`w-[400px] ${cardBackgroundClass} rounded-none`} key={index}>
+            <Card className={` ${cardBackgroundClass} rounded-none`} key={index}>
               <CardHeader className="flex flex-row justify-center items-center ">
                 <div className="flex flex-col  ">
                   <h6 className="text-center py-5 text-2xl font-semibold">
@@ -65,9 +65,9 @@ const Plans = () => {
                 <Button
                   isExternal
                   href="/plan"
-                  className="bg-main text-white outline outline-1 rounded-none "
+                  className="bg-background text-main outline outline-1 rounded-none "
                 >
-                  More info
+                  Subscribe
                 </Button>
               </CardFooter>
             </Card>

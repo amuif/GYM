@@ -48,7 +48,7 @@ const Testimonials = () => {
   return (
     <div>
       
-      <div className="flex flex-col items-center bg-cover bg-center text-white " style={{ backgroundImage: `url(/Images/testimonyBG.jpg)`,  }}>
+      <div className="flex flex-col items-center bg-cover bg-center text-white py-4" style={{ backgroundImage: `url(/Images/testimonyBG.jpg)`,  }}>
         <h2 className="text-center py-9 text-2xl">
           What people say about us and our classes
         </h2>

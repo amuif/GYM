@@ -36,7 +36,7 @@ export function Questions() {
   return (
     <>
       <div className="flex flex-col gap-5 p-5 text-left">
-        <h4 className=" text-3xl">
+        <h4 className=" text-xl md:text-3xl">
           Discover Your Fitness Journey with Our FAQ
         </h4>
         <p>
@@ -55,12 +55,13 @@ export function Questions() {
           us know if there's anything else we can assist you with!
         </p>
       </div>
-      {questions.map((question, index) => {
+     <div className="w-full ">
+     {questions.map((question, index) => {
         return (
           <Accordion
             type="single"
             collapsible
-            className="w-full px-11 pb-5"
+            className="w-full px-2 md:px-11 pb-5"
             key={index}
           >
             <AccordionItem value={question.value}>
@@ -74,6 +75,7 @@ export function Questions() {
           </Accordion>
         );
       })}
+     </div>
     </>
   );
 }

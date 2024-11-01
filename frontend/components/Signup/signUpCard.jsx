@@ -2,9 +2,10 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "@/Context/userContext";
 import axios from "axios";
-import styles from "@/app/styles.css"
+import styles from "@/app/styles.css";
 import {
   Card,
   CardContent,
@@ -22,17 +23,17 @@ export function SignUpCard() {
     email: "",
     password: "",
   });
-  const navigate = useRouter();
+  const router = useRouter();
 
-  
+  const [flag, setFlag] = useState(false);
+  const [err, setErr] = useState(null);
+
+  const { setUser } = useContext(UserContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = data;
-    console.log(data);
 
     try {
-  
-
       const response = await axios.post(
         "http://localhost:5000/api/user/register",
         {
@@ -44,31 +45,28 @@ export function SignUpCard() {
 
       if (response.data.error) {
         toast.error(response.data.error);
+        console.log(response.data.err);
       } else {
         setData({});
+
         toast.success("Registration was successful. Welcome aboard!");
-        console.log("Success")
-        navigate.push('/login'); 
+        setUser(response.data);
+
+        router.push("/");
+        setFlag(false);
       }
     } catch (error) {
-      console.error("Error during registration:", error);
+      setFlag(true);
+      setErr(error);
     }
   };
 
-
   return (
     <>
-    <div className={styles.bgWrap}>
-        <Image
-          src=""
-          fill={true}
-          className="object-cover -z-10 blur-sm brightness-50"
-          quality={100}
-          alt="Background Image"
-        />
-      </div>
-      <div className={`flex items-center justify-center h-screen bg-backggroundSVG`}>
-        <Card className="w-1/4 ">
+      <div
+        className={`flex items-center justify-center h-screen bg-backggroundSVG`}
+      >
+        <Card className="w-full md:w-1/4 px-2">
           <CardHeader>
             <CardTitle className="text-center">Sign Up</CardTitle>
           </CardHeader>
@@ -76,6 +74,24 @@ export function SignUpCard() {
           <CardContent>
             <form onSubmit={handleSubmit}>
               <div className="grid w-full content-center  gap-4">
+                {flag === true && err.request.status == 400 ? (
+                  <>
+                    <span className="text-danger text-tiny text-center">
+                      All fields are required
+                    </span>
+                  </>
+                ) : (
+                  ""
+                )}
+                {flag === true && err.request.status == 409 ? (
+                  <>
+                    <span className="text-danger text-tiny text-center">
+                      User already exists with this account
+                    </span>
+                  </>
+                ) : (
+                  ""
+                )}
                 <div className="flex flex-col space-y-1.5">
                   <Label>Full Name</Label>
                   <Input
@@ -86,6 +102,15 @@ export function SignUpCard() {
                     value={data.name}
                     onChange={(e) => setData({ ...data, name: e.target.value })}
                   />
+                  {flag === true && data.name.length < 3 ? (
+                    <>
+                      <span className="text-tiny text-danger ">
+                        Full name should be atleast 3 characters
+                      </span>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
                 <div className="flex flex-col space-y-1.5">
@@ -100,6 +125,15 @@ export function SignUpCard() {
                       setData({ ...data, email: e.target.value })
                     }
                   />
+                  {flag === true && data.email.length < 3 ? (
+                    <>
+                      <span className="text-tiny text-danger ">
+                        Full name should be atleast 3 characters
+                      </span>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
                 <div className="flex flex-col space-y-1.5">
@@ -114,6 +148,15 @@ export function SignUpCard() {
                       setData({ ...data, password: e.target.value })
                     }
                   />
+                  {flag === true && data.password.length < 6 ? (
+                    <>
+                      <span className="text-tiny text-danger">
+                        Password must be greater than 6 characters
+                      </span>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
 

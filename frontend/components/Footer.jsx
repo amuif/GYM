@@ -1,6 +1,9 @@
 import React from "react";
 import { Avatar, Button } from "@nextui-org/react";
 import Link from "next/link";
+import Facebook from "@/public/SVG/facebook.svg"
+import Instagram from "@/public/SVG/Instagram.svg"
+import Image from "next/image";
 export default function Footer() {
   const AboutData = [
     { name: "About us", link: "/about" },
@@ -23,7 +26,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className=" flex flex-row justify-between gap-10 p-14 bg-[#2B2024] text-white ">
+      <div className="flex flex-col md:flex-row gap-5 md:gap-10 p-7 md:p-14 w-full bg-[#2B2024] text-white ">
         {/* Social media links and logo */}
         <div className="flex flex-col">
           <h2 className="text-bold text-main">Lorem GYM</h2>
@@ -31,22 +34,22 @@ export default function Footer() {
 
           <div className="flex gap-3 items-center">
             <Link href="#">
-            <Avatar
-              width="54"
-              height="94"
-              src="/SVG/Facebook.ico"
+            <Image
+              width="34"
+              height="34"
+              src={Facebook}
               alt="facebook-logo"
-              className="bg-inherit"
+              className=""
             />
 
             </Link>
            <Link href="#">
-           <Avatar
-              width="94"
-              height="94"
-              alt="instagram-new"
-              src="https://img.icons8.com/3d-fluency/94/instagram-new.png"
-              className="bg-inherit"
+           <Image
+              width="34"
+              height="50"
+              alt="instagram-logo"
+              src={Instagram}
+              className=""
             />
            </Link>
 
@@ -54,7 +57,8 @@ export default function Footer() {
           </div>
         </div>
         {/* About refer Links */}
-        <div className="w-48 flex-col ">
+       <div className="grid grid-cols-2 md:grid-cols-4 w-full gap-5">
+       <div className="w-48 flex-col ">
           <div>
             <h2 className="underline text-main">About</h2>
             {AboutData.map((about, index) => {
@@ -105,6 +109,7 @@ export default function Footer() {
             })}
           </div>
         </div>
+       </div>
       </div>
     </>
   );

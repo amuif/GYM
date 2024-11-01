@@ -25,9 +25,22 @@ export function UserContextProvider({ children }) {
       axios.defaults.withCredentials = true;
     }
   }, []);
+  const logout = () => {
+    axios
+      .post(
+        "http://localhost:5000/api/user/logout",
+        {},
+        { withCredentials: true }
+      )
+      .then(() => {
+        setUser(null);
+        router.push("/login");
+      })
+      .catch((error) => console.error("Logout failed:", error));
+  };
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser,logout }}>
       {children}
     </UserContext.Provider>
   );

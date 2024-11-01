@@ -31,9 +31,9 @@ const Whyus = () => {
 
   return (
     <>
-      <div className="py-10">
-        <h3 className="text-center font-bold text-3xl p-5">Why Choose us</h3>
-        <div className="flex flex-row gap-7 justify-evenly">
+      <div className="md:py-10">
+        <h3 className="text-center text-2xl md:text-5xl font-semibold p-4">Why Choose Us</h3>
+        <div className="flex flex-col md:flex-row gap-7 justify-evenly px-2">
           {Whyus.map((why, index) => {
             return (
               <div
@@ -50,9 +50,9 @@ const Whyus = () => {
 
                 />
                 <div className="px-6 py-4">
-                  <div className="font-bold text-xl mb-2">{why.title}</div>
+                  <div className="font-bold text-xl mb-2 text-center">{why.title}</div>
                   <p className="text-gray-700 text-base pb-3">{why.description}</p>
-                  <Link href={why.link} className="pt-4">
+                  {/* <Link href={why.link} className="pt-4">
                     <Button className="bg-main text-white text-center rounded-none" variant="solid">
                       Learn more{" "}
                       <img
@@ -63,7 +63,7 @@ const Whyus = () => {
                         alt="up-right-arrow"
                       />
                     </Button>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             );

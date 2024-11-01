@@ -17,11 +17,11 @@ const Landing = () => {
         />
       </div>
       <div className=" flex flex-col items-center justify-center h-screen gap-5  text-white ">
-        <h1 className="font-bold text-6xl  ">
+        <h1 className="font-bold text-2xl md:text-6xl  px-2 text-center ">
           {" "}
           Workout like you never did Before
         </h1>
-        <p>
+        <p className="text-center px-2">
           Lorem ipsum dolor sit amet consectetur adipisicing elit,aspernatur
           similique nobis expedita!
         </p>
@@ -31,7 +31,7 @@ const Landing = () => {
               Start Now
             </Button>
           </Link>
-          <Link href={"/about"}>
+          <Link href={"/contact"}>
             <Button color="" variant="light">
               Learn More{" "}
               <img

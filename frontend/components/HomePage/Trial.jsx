@@ -6,7 +6,7 @@ const Trial = () => {
   return (
     <>
     <div className='py-11 '>
-        <div className='text-center text-4xl '>
+        <div className='text-center text-2xl md:text-5xl font-semibold p-4'>
             <h3>Get Your First Trial visit</h3>
 
         </div>

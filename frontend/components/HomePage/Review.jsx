@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import next from "@/public/SVG/next.svg";
 import previous from "@/public/SVG/previous.svg";
@@ -46,25 +46,26 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <h2 className="text-center py-9 text-2xl">What people say about us and our classes</h2>
-      <div className="p-4  shadow-lg rounded-lg w-4/5 bg-blackBg text-white">
+    <div className="flex flex-col items-center px-2">
+      <h2 className="text-center text-2xl md:text-5xl font-semibold p-4">
+        What people say about us and our classes
+      </h2>
+      <div className="p-4  shadow-lg rounded-lg w-full md:w-4/5 bg-blackBg text-white px-2">
         <p className="text-lg font-semibold py-2 text-main">
           {testimonials[currentTestimonial].name}
         </p>
         <p className="text-md p-4">
           {testimonials[currentTestimonial].testimonial}
         </p>
-        <div className="flex  space-x-4 mt-4 justify-end px-3">
-        <button onClick={prevTestimonial} className="">
-          <Image src={previous} width={20} height={20} alt="previous sign" />
-        </button>
-        <button onClick={nextTestimonial} className="">
-          <Image src={next} width={20} height={20} alt="next sign" />
-        </button>
+        <div className="flex justify-center items-center space-x-4 mt-4 md:justify-end px-3">
+          <button onClick={prevTestimonial} className="">
+            <Image src={previous} width={20} height={20} alt="previous sign" />
+          </button>
+          <button onClick={nextTestimonial} className="">
+            <Image src={next} width={20} height={20} alt="next sign" />
+          </button>
+        </div>
       </div>
-      </div>
-      
     </div>
   );
 };
