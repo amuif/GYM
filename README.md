@@ -21,6 +21,6 @@ A modern, full-stack web application template built with **Next.js**, **Tailwind
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/gym.git
+   git clone https://github.com/amuif/gym.git
    cd gym
 
